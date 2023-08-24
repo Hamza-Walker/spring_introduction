@@ -1,4 +1,9 @@
 package walker.model;
 
-public record GreetResponse( String greeet) {
-}
+import java.util.List;
+
+public record GreetResponse(
+        String greet,
+        List<String> favProgLan,
+        Person person
+) {}

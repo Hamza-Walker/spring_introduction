@@ -6,6 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import walker.model.GreetResponse;
+import walker.model.Person;
+
+import java.util.List;
 
 @SpringBootApplication
 @RestController
@@ -17,6 +20,11 @@ public class Main {
 
     @GetMapping("/greet")
     public GreetResponse greet() {
-        return new GreetResponse(" Hello");
+        GreetResponse response = new GreetResponse(
+                " Hello",
+                List.of("Python", "JavaScript","Java"),
+                new Person("Anthony", 30,3000)
+        );
+        return response;
     }
 }
