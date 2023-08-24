@@ -1,14 +1,25 @@
 package walker.model;
 
-import java.util.Objects;
+import jakarta.persistence.*;
 
-public class customer {
+import java.util.Objects;
+@Entity
+public class Customer {
+            @Id
+            @SequenceGenerator(
+                    name = " customer_id_sequence",
+                    sequenceName = "customer_id_sequence"
+            )
+            @GeneratedValue(
+                    strategy = GenerationType.SEQUENCE,
+                    generator = "customer_id_sequence"
+            )
             private Integer id;
             private String name;
             private String email;
             private Integer age;
 
-    public customer(Integer id,
+    public Customer(Integer id,
                     String name,
                     String email,
                     Integer age) {
@@ -18,7 +29,7 @@ public class customer {
         this.age = age;
     }
 
-    public customer() {
+    public Customer() {
     }
 
     public void setId(Integer id) {
@@ -40,7 +51,7 @@ public class customer {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof customer customer)) return false;
+        if (!(o instanceof Customer customer)) return false;
         return Objects.equals(id, customer.id) && Objects.equals(name, customer.name) && Objects.equals(email, customer.email) && Objects.equals(age, customer.age);
     }
 
